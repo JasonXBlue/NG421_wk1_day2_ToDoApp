@@ -4,19 +4,20 @@ import { FormsModule } from "@angular/forms";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"]
+  styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
   title = "Todos";
   todoList: any[] = [];
   todoTitle: string;
-  todoDate: Date = new Date();
+  //todoDate: Date = new Date();
+  todoDate: Date;
 
   ngOnInit() {
     this.todoTitle = "";
     this.todoList = [
       // example of how to make an item in todo list
-      { title: "Install Angular CLI", isDone: false }
+      //{ title: "Install Angular CLI", isDone: false },
     ];
   }
 
@@ -25,7 +26,7 @@ export class AppComponent {
     this.todoList.push({
       title: this.todoTitle,
       date: this.todoDate,
-      isDone: false
+      isDone: false,
     });
 
     // resets our todoTitle variable to an empty string
@@ -34,7 +35,11 @@ export class AppComponent {
 
   // a method to delete an item
   deleteTodo(todo: any) {
-    const index = this.todoList.findIndex(todoItem => todoItem === todo);
+    const index = this.todoList.findIndex((todoItem) => todoItem === todo);
     this.todoList.splice(index, 1);
   }
+
+  // complete(todo: any){
+  //   //todo= todo.strike();
+  // }
 }
